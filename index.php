@@ -9,6 +9,8 @@
 (function ($) {
 	$.background = function (images, speed) {
 			
+
+		
 		// if speed has not been set or is not a number	
 		if(speed == undefined || isNaN(speed))
 			speed = 2000;
@@ -31,6 +33,33 @@
 		$('.bg div').hide();
 		$('.bg div:eq(0)').show();
 		
+		// change css of new elements
+		$('html, body').css({
+			'margin' : '0',
+			'padding' : '0',
+			'height' : '100%',
+			'width' : '100%'
+		});
+		
+		$('.bg, .bg div').css({
+			'margin' : '0',
+			'padding' : '0',
+			'height' : '100%',
+			'width' : '100%',
+			'position' : 'absolute',
+			'z-index' : '-999'
+		});
+		
+		$('.bg div').css({
+			'background-repeat' : 'no-repeat',
+			'background-position' : 'center',
+			'background-attachment' : 'fixed',
+			'-webkit-background-size' : 'cover',
+			'-moz-background-size' : 'cover',
+			'-o-background-size' : 'cover',
+			'background-size' : 'cover'
+		});
+		
 		$total = $('.bg').find('div').size();
 		
 		var $i  = 0;
@@ -48,46 +77,18 @@
 	
 		}, speed);
 		
-	}
-	
+	}	
 })(jQuery);
 	
 $(document).ready(function () {
 
-	$.background(['Penguins.jpg', 'Desert.jpg', 'Chrysanthemum.jpg', 'Hydrangeas.jpg', 'Jellyfish.jpg', 'Koala.jpg', 'Lighthouse.jpg', 'Penguins.jpg', 'Tulips.jpg'], 5000);
+	$.background(['/img/Penguins.jpg', '/img/Desert.jpg', '/img/Chrysanthemum.jpg', '/img/Hydrangeas.jpg', '/img/Jellyfish.jpg', '/img/Koala.jpg', '/img/Lighthouse.jpg', '/img/Penguins.jpg', '/img/Tulips.jpg'], 5000);
 		
 });
 </script>
 <style>
-	* {
-		margin:0;
-		padding:0;
-	}
-	html, body {
-		margin:0;
-		padding:0;
-		height:100%;
-		width:100%;
+	body {
 		font-family:Arial, Helvetica, sans-serif
-	}
-	.bg {
-		height:100%;
-		width:100%;
-		position:absolute;
-		z-index:-999;
-	}
-	.bg div {
-		height:100%;
-		width:100%;
-		position:absolute;
-		z-index:-999;
-		background-repeat:no-repeat;
-		background-position:center;
-		background-attachment:fixed;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
 	}
 	.container {
 		margin:0 auto;
