@@ -5,18 +5,17 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 
-/* background plugin */
+/* coverfade plugin */
 (function ($) {
-	$.background = function (images, speed) {
-			
+	
+	$.coverfade = function (images, speed) {
 
-		
 		// if speed has not been set or is not a number	
 		if(speed == undefined || isNaN(speed))
 			speed = 2000;
 			
 		// prepare container div for background images		
-		var html = '<div class="bg">';
+		var html = '<div class="coverfade">';
 				
 		// loop over each image
 		for (var i=0; i<images.length; i++)
@@ -30,8 +29,8 @@
 		// add new div containing background images to the immediately after opening <body> tag
 		$('body').prepend(html);
 		
-		$('.bg div').hide();
-		$('.bg div:eq(0)').show();
+		$('.coverfade div').hide();
+		$('.coverfade div:eq(0)').show();
 		
 		// change css of new elements
 		$('html, body').css({
@@ -41,7 +40,7 @@
 			'width' : '100%'
 		});
 		
-		$('.bg, .bg div').css({
+		$('.coverfade, .coverfade div').css({
 			'margin' : '0',
 			'padding' : '0',
 			'height' : '100%',
@@ -50,7 +49,7 @@
 			'z-index' : '-999'
 		});
 		
-		$('.bg div').css({
+		$('.coverfade div').css({
 			'background-repeat' : 'no-repeat',
 			'background-position' : 'center',
 			'background-attachment' : 'fixed',
@@ -60,20 +59,25 @@
 			'background-size' : 'cover'
 		});
 		
-		$total = $('.bg').find('div').size();
+		// get total number of div children in div.coverfade
+		$total = $('.coverfade').find('div').size();
 		
 		var $i  = 0;
-			
+		
+		// every x seconds, change the cover background image to the next image in the array
 		setInterval(function () {
 	
-			$('.bg').find(':eq(' + $i + ')').fadeOut('slow');
+			// get current background image div and fade it out
+			$('.coverfade').find(':eq(' + $i + ')').fadeOut('slow');
 	
+			// if have reached the end of the background image divs
 			if($i == $total - 1)
-				$i = 0
+				$i = 0 // reset pointer (move to first image)
 			else
-				$i++;
+				$i++; // increment pointer by 1 (move to next image)
 				
-			$('.bg').find(':eq(' + $i + ')').fadeIn('slow');
+			// get next background image div and fade it in
+			$('.coverfade').find(':eq(' + $i + ')').fadeIn('slow');
 	
 		}, speed);
 		
