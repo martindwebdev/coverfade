@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="coverfade.jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	var images = ['/img/Penguins.jpg', '/img/Desert.jpg', '/img/Chrysanthemum.jpg', '/img/Hydrangeas.jpg', '/img/Jellyfish.jpg', '/img/Koala.jpg', '/img/Lighthouse.jpg', '/img/Penguins.jpg', '/img/Tulips.jpg'];
+
+	$.coverfade(images, 5000);
+		
+});
+</script>
+<style>
+	body {
+		font-family:Arial, Helvetica, sans-serif
+	}
+	.container {
+		margin:0 auto;
+		width:60%;
+		background-color:#fff;
+		opacity:0.8;
+		z-index:1;
+		padding:5%;
+		color:#333;
+	}		
+	h1 {
+	}
+</style>
+<title>Coverfade 1.0</title>
+</head>
+<body>
+    <div class="container">
+    	<h1>Coverfade 1.0</h1>
+        
+		<p>Coverfade is a lightweight jQuery plugin that allows you display a collection of background images on your site that crossfade between each other after a specified duration of time.</p>
+        
+        <h2>Usage</h2>
+        <p>Coverfade is simple to use and requires only a few short lines of code. Check out the example below or check the source of this page.</p>
+        
+        <pre>
+        <code>
+// an array of background images
+var images = ['/img/Penguins.jpg', '/img/Desert.jpg', '/img/Chrysanthemum.jpg'];
+
+// duration between transitions in milliseconds
+var speed = 5000;
+
+// invoke the plugin
+$.coverfade(images, speed);
+        </code>
+        </pre>
+        
+    </div>
+</body>
+</html>
